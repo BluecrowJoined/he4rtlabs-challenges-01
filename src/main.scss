@@ -1,0 +1,163 @@
+@import "scss/_color.scss";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://use.fontawesome.com/releases/v5.3.1/css/all.css');
+
+body {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: map-get($BACKGROUND_COLORS, "secondary");
+    font-family: 'Poppins', sans-serif;
+}
+
+.body-draw {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 350px;
+    z-index: -1;
+}
+
+header {
+    width: 100%;
+    height: 60px;
+    padding: 5px 0;
+    background-color: map-get($BACKGROUND_COLORS, "primary");
+    border-bottom: 1px solid map-get($BORDER_COLORS, "primary");
+    box-shadow: 0 0 5px map-get($SHADOW_COLORS, "primary");
+    img {
+        height: 60px;
+        margin-left: 20px;
+    }
+}
+
+main {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 20px;
+
+    .box {
+        display: block;
+        border: 1px solid map-get($BORDER_COLORS, "primary");
+        border-radius: 10px;
+        padding: 20px 30px;
+        background-color: map-get($BACKGROUND_COLORS, "primary");
+    }
+    .column {
+        width: 100%;
+        .information {
+            @extend .box;
+            padding: 0;
+            .label {
+                padding: 20px 30px;
+                border-bottom: 2px solid map-get($BORDER_COLORS, "primary");
+                cursor: pointer;
+                .icon {
+                    width: 60px;
+                    height: 60px;
+                    text-align: center;
+                    margin-right: 10px;
+                    .fas {
+                        font-size: 24px;
+                        color: map-get($FONT_COLORS, "primary");
+                    }
+                }
+                .title {
+                    font-size: 24px;
+                    font-weight: 600;
+                    color: map-get($FONT_COLORS, "primary");
+                    white-space: nowrap;
+                }
+                .description {
+                    font-size: 18px;
+                    font-weight: 400;
+                    color: map-get($FONT_COLORS, "secondary");
+                }
+                &:last-child {
+                    border-bottom: none;
+                }
+            }
+        }
+        .calculator {
+            @extend .box;
+            .title {
+                font-size: 32px;
+                font-weight: 600;
+                color: map-get($FONT_COLORS, "primary");
+            }
+            form {
+                margin-top: 15px;
+                label {
+                    font-size: 20px;
+                    font-weight: 500;
+                    color: map-get($FONT_COLORS, "secondary");
+                }
+                input {
+                    display: block;
+                    width: 500px;
+                    margin: 10px 0 20px 0;
+                    padding: 5px 20px;
+                    background-color: darken(map-get($BACKGROUND_COLORS, "primary"), 5%);
+                    border: 2px solid map-get($BORDER_COLORS, "primary");
+                    border-radius: 5px;
+                    font-size: 24px;
+                    color: map-get($FONT_COLORS, "secondary");
+                    outline: none;
+                    &.error {
+                        background-color: map-get($BACKGROUND_COLORS, "red-low");
+                        border: 2px solid map-get($BORDER_COLORS, "red");
+                        color: map-get($FONT_COLORS, "red");
+                    }
+                }
+                button {
+                    display: block;
+                    background-color: rgba(255, 255, 255, 0);
+                    border: 2px solid map-get($BORDER_COLORS, "purple");
+                    border-radius: 2px;
+                    box-shadow: inset 0 0 0 0 map-get($SHADOW_COLORS, "purple");
+                    margin-top: 20px;
+                    padding: 10px 30px;
+                    font-size: 20px;
+                    font-weight: 200;
+                    text-transform: uppercase;
+                    color: map-get($FONT_COLORS, "primary");
+                    cursor: pointer;
+                    transition: ease-out 0.4s;
+                    &:hover {
+                        box-shadow: inset 300px 0 0 0 map-get($SHADOW_COLORS, "purple");
+                        color: map-get($FONT_COLORS, "primary");
+                    }        
+                }
+            }
+        }
+    }
+    .result {
+        @extend .box;
+        border: 2px solid map-get($BACKGROUND_COLORS, "purple");
+        background-color: map-get($BACKGROUND_COLORS, "purple-low");
+        text-align: center;
+        .icon {
+            float: right;
+            position: relative;
+            bottom: 15px;
+            left: 15px;
+            font-size: 20px;
+            color: map-get($FONT_COLORS, "primary");
+            cursor: pointer;
+            &:hover {
+                color: map-get($FONT_COLORS, "purple");
+            }
+        }
+        p {
+            font-size: 22px;
+            font-weight: 300;
+            color: map-get($FONT_COLORS, "primary");
+            .value {
+                font-weight: 600;
+            }
+        }
+    }
+}
